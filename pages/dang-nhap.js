@@ -1,13 +1,13 @@
 import { auth } from '@/services/firebaseConfig';
 import { Field, Form, Formik } from 'formik';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import {
   signinInitialValues,
-  validationSchemaSignin,
+  validationSchemaSignin
 } from '../constants/formik';
-import Link from 'next/link'
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
