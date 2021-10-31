@@ -6,17 +6,11 @@ body {
 .header {
     padding: 12px;
     text-align: center;
-    background-color: #1c4587;
+    background-color: #004eff;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-}
-
-.header a {
-    font-weight: 600;
-    text-decoration: none;
-    color: #fff;
 }
 
 @keyframes spinner {

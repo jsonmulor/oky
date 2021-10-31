@@ -56,7 +56,6 @@ export default function Login() {
 
   const { errEmail, errPassword } = errorAuth;
 
-  console.log(errorAuth);
   function renderMessage() {
     if (parseInt(code) === 401) {
       return 'Để ngăn chặn việc kẻ xấu lợi dụng, vì vậy hệ thống chỉ cho phép đăng nhập một thiết bị hoặc trình duyệt trên cùng một tài khoản đăng ký.';

@@ -21,6 +21,23 @@ body {
   /* Reset default margin */
 }
 
+
+.header a {
+  text-decoration: underline;
+  color: #fff;
+  font-weight: 600;
+}
+
+.header .left {
+  position: fixed;
+  top: 40px;
+  left: 50px;
+}
+
+.header .left a {
+  text-decoration: none;
+}
+
 .wrapper {
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -34,8 +51,29 @@ body {
   height: auto;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+  margin-top: 50px;
 }
 
+.header .center {
+  display: flex;
+  flex-direction: column;
+}
+
+.header .center>span {
+  color: #efff00;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.header strong {
+  color: #efff00;
+}
+
+.header strong a {
+  margin-left: 10px;
+  text-decoration: underline;
+  display: inline;
+}
 
 iframe {
   display: block;
@@ -45,12 +83,4 @@ iframe {
   height: calc(100vh - 20px);
   /* Viewport-relative units */
   width: 100vw;
-}
-
-.header a {
-  display: flex;
-  justify-content: space-between;
-  width: 1200px;
-  margin: 0 auto;
-  text-align: center;
 }
