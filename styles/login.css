@@ -11,7 +11,24 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    animation: .2s backgroundColor infinite;
 }
+
+
+
+
+@keyframes backgroundColor {
+    0% {
+        background-color: #004eff;
+
+    }
+
+    100% {
+        background-color: #003abf;
+
+    }
+}
+
 
 @keyframes spinner {
     0% {

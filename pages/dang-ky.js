@@ -1,4 +1,5 @@
 import { auth } from '@/services/firebaseConfig';
+import { AUTH_ERROR } from 'constants';
 import { Field, Form, Formik } from 'formik';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -7,48 +8,32 @@ import {
   signinInitialValues,
   validationSchemaSignin,
 } from '../constants/formik';
-import Link from 'next/link'
 
-export default function Login() {
+export default function Signup() {
   const [loading, setLoading] = useState(false);
   const [errorAuth, setAuthError] = useState({});
   const {
     push,
-    query: { code },
   } = useRouter();
 
   const handleSubmitSignin = async ({ email, password }) => {
     try {
       setLoading(true);
-      const { user } = await auth().signInWithEmailAndPassword(email, password);
-      if (user) {
-        const {
-          data: { sessionKey },
-        } = await api.getUserSessionKey({ email });
-        localStorage.setItem('sessionKey', sessionKey);
-        setTimeout(() => {
-          setLoading(false);
-          push('/');
-        }, 1500);
-      }
+      await auth().createUserWithEmailAndPassword(email, password);
+      const {
+        data: { sessionKey },
+      } = await api.getUserSessionKey({ email });
+      localStorage.setItem('sessionKey', sessionKey);
+      setTimeout(() => {
+        setLoading(false);
+        push('/');
+      }, 1500);
     } catch (error) {
       setLoading(false);
-      if (error.code.includes('user')) {
-        setAuthError({
-          errEmail: 'Email không tồn tại, thử lại',
-          errPassword: '',
-        });
-      } else if (error.code.includes('password')) {
-        setAuthError({
-          errEmail: '',
-          errPassword: 'Mật khẩu không chính xác, thử lại',
-        });
-      } else if (error.code.includes('too-many-requests')) {
-        setAuthError({
-          errEmail: '',
-          errPassword: 'Quá nhiều yêu cầu, thử lại sau vài phút',
-        });
-      }
+      setAuthError({
+        errEmail: 'Email đã tồn tại! Vui lòng nhập email khác',
+        errPassword: '',
+      });
       setTimeout(() => {
         setAuthError({});
       }, 3000);
@@ -57,19 +42,13 @@ export default function Login() {
 
   const { errEmail, errPassword } = errorAuth;
 
-  function renderMessage() {
-    if (parseInt(code) === 401) {
-      return 'Để ngăn chặn việc kẻ xấu lợi dụng, vì vậy hệ thống chỉ cho phép đăng nhập một thiết bị hoặc trình duyệt trên cùng một tài khoản đăng ký.';
-    }
-  }
-
   useEffect(() => {
-    document.title = 'Đăng nhập';
+    document.title = 'Đăng ký';
   }, []);
 
   useEffect(() => {
     document.querySelector('body').style =
-      'background: url("https://i.imgur.com/KPGpfym.jpg") 50% fixed; background-size: cover;';
+      'background: url("https://i.imgur.com/lVGjzrS.png") 50% fixed; background-size: cover;';
     return () => {
       document.querySelector('body').style = 'background: none';
     };
@@ -88,9 +67,8 @@ export default function Login() {
             onSubmit={handleSubmit}
             autoComplete="off"
           >
-            <span className="auth-error-msg">{renderMessage()}</span>
             <p className="title">
-              Đăng nhập {parseInt(code) === 401 ? 'lại' : ''}
+              Đăng ký miễn phí
             </p>
             <Field name="email">
               {({ field }) => (
@@ -114,7 +92,7 @@ export default function Login() {
                   id="password"
                   type="password"
                   className="form-control"
-                  placeholder="Nhập mật khẩu"
+                  placeholder="Tạo mật khẩu gồm 8 ký tự"
                   {...field}
                 />
               )}
@@ -126,22 +104,22 @@ export default function Login() {
             )}
             <p>
               <span>
-                Bạn chưa có tài khoản?{' '}
-                <Link href="/dang-ky" as="/dang-ky">
+                Đã có tài khoản?{' '}
+                <Link href="/dang-nhap" as="/dang-nhap">
                   <a
                     style={{
                       fontSize: '16px',
                       fontWeight: '500',
                     }}
                   >
-                    Đăng ký
+                    Đăng nhập
                   </a>
                 </Link>
               </span>
             </p>
             <button type="submit">
               <i className="spinner" />
-              <span className="state">Đăng nhập</span>
+              <span className="state">Đăng ký</span>
             </button>
           </Form>
         )}

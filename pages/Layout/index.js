@@ -19,7 +19,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className="header">
-        <div className="left">
+        <div className="top">
           <Link href="/">
             <a>
               <span>Về trang chủ</span>

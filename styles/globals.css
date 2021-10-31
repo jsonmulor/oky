@@ -28,10 +28,8 @@ body {
   font-weight: 600;
 }
 
-.header .left {
-  position: fixed;
-  top: 40px;
-  left: 50px;
+.header .top {
+  margin-bottom: 6px;
 }
 
 .header .left a {
