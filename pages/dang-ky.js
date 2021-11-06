@@ -117,6 +117,9 @@ export default function Signup() {
                 </Link>
               </span>
             </p>
+            <p>
+              <a target="_blank" className="btn-help" href="">Help me!</a>
+            </p>
             <button type="submit">
               <i className="spinner" />
               <span className="state">Đăng ký</span>

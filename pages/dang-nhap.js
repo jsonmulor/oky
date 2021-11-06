@@ -69,7 +69,7 @@ export default function Login() {
 
   useEffect(() => {
     document.querySelector('body').style =
-      'background: url("https://i.imgur.com/KPGpfym.jpg") 50% fixed; background-size: cover;';
+      'background: url("https://i.imgur.com/gjoqNPn.png") 50% fixed; background-size: cover;';
     return () => {
       document.querySelector('body').style = 'background: none';
     };
@@ -138,6 +138,9 @@ export default function Login() {
                   </a>
                 </Link>
               </span>
+            </p>
+            <p>
+              <a target="_blank" className="btn-help" href="">Help me!</a>
             </p>
             <button type="submit">
               <i className="spinner" />

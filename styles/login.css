@@ -193,3 +193,7 @@ footer a:link {
     color: #fff;
     text-decoration: none;
 }
+
+.btn-help {
+    font-size: 18px !important;
+}
