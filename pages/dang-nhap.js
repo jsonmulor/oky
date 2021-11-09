@@ -140,7 +140,7 @@ export default function Login() {
               </span>
             </p>
             <p>
-              <a target="_blank" className="btn-help" href="">Help me!</a>
+              <a target="_blank" className="btn-help" href="https://www.facebook.com/groups/933883197356348/posts/1079692246108775">Help me!</a>
             </p>
             <button type="submit">
               <i className="spinner" />
