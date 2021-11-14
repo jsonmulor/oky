@@ -22,7 +22,7 @@ export default function KhoaHoc() {
           sessionKey,
         });
       } catch (error) {
-        router.push('/dang-nhap?code=401');
+        // router.push('/dang-nhap?code=401');
         console.log(error);
       }
     }

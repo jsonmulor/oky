@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     auth().onAuthStateChanged(async user => {
       if (!user) {
-        router.push('/dang-nhap');
+        // router.push('/dang-nhap');
       } else {
         const token = await auth().currentUser.getIdToken(true);
         localStorage.setItem('token', token);
