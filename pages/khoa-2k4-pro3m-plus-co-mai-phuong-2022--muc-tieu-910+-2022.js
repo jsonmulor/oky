@@ -17,7 +17,7 @@ export default function KhoaHoc() {
   useEffect(() => {
     async function handleCheckUserSession() {
       try {
-        const sessionKey = localStorage.getItem('sessionKeys') || '';
+        const sessionKey = localStorage.getItem('sessionKey') || '';
         await api.checkUserSession({
           email,
           sessionKey,
