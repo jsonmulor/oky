@@ -25,7 +25,7 @@ export default function Login() {
         const {
           data: { sessionKey },
         } = await api.getUserSessionKey({ email });
-        localStorage.setItem('sessionKeys', sessionKey);
+        localStorage.setItem('sessionKey', sessionKey);
         setTimeout(() => {
           setLoading(false);
           push('/');
