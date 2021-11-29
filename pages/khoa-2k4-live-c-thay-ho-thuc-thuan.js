@@ -23,6 +23,7 @@ export default function KhoaHoc() {
         });
       } catch (error) {
         router.push('/dang-nhap?code=401');
+        
         console.log(error);
       }
     }
